@@ -67,10 +67,10 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 +-------------+--------+--------+------------+
 4 rows in set (0.00 sec)
 
------------------------------------------------------------------------------------------------------- 
-UC5-Ability to retrieve salary data for a particular employee as well as all employees who have joined 
-in a particular data range from the payroll service database
-------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+UC5-Ability_to_retrieve_salary_data_for_a_particular_employee_as_well_as_all_employees_who_have_joined_in_a_particular_data_range_from_the_payroll_service_database
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 mysql> SELECT SALARY FROM EMPLOYEE_PAYROLL  WHERE NAME = "RAM";
 +--------+
 | SALARY |
@@ -86,3 +86,39 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL WHERE START_DATE BETWEEN CAST('2018-01-03'
 |           2 | SHAM |  50000 | 2019-05-21 |
 +-------------+------+--------+------------+
 2 rows in set (0.00 sec)
+
+-------------------------------------------------------------------------------------------------------------- 
+UC6-Ability to add Gender to Employee Payroll Table and Update the Rows to reflect the correct Employee Gender
+--------------------------------------------------------------------------------------------------------------
+mysql> ALTER TABLE EMPLOYEE_PAYROLL ADD GENDER CHAR(1) AFTER NAME;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE EMPLOYEE_PAYROLL;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| EMPLOYEE_ID | int          | NO   | PRI | NULL    | auto_increment |
+| NAME        | varchar(255) | NO   |     | NULL    |                |
+| GENDER      | char(1)      | YES  |     | NULL    |                |
+| SALARY      | double       | NO   |     | NULL    |                |
+| START_DATE  | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> UPDATE EMPLOYEE_PAYROLL SET GENDER = 'M' WHERE NAME = 'RAM' OR NAME = 'SHAM';
+Query OK, 2 rows affected (0.03 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE_PAYROLL;
++-------------+--------+--------+--------+------------+
+| EMPLOYEE_ID | NAME   | GENDER | SALARY | START_DATE |
++-------------+--------+--------+--------+------------+
+|           1 | RAM    | M      |  10000 | 2018-01-03 |
+|           2 | SHAM   | M      |  50000 | 2019-05-21 |
+|           3 | STEVEN | NULL   |  60000 | 2012-01-22 |
+|           4 | CHARLS | NULL   |  20000 | 2011-02-06 |
++-------------+--------+--------+--------+------------+
+4 rows in set (0.00 sec)
+
+

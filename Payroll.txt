@@ -15,3 +15,6 @@ mysql> show databases;
 | sys                |
 +--------------------+
 5 rows in set (0.03 sec)
+
+mysql> use payroll_services;
+Database changed

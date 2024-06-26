@@ -88,7 +88,7 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL WHERE START_DATE BETWEEN CAST('2018-01-03'
 2 rows in set (0.00 sec)
 
 -------------------------------------------------------------------------------------------------------------- 
-UC6-Ability to add Gender to Employee Payroll Table and Update the Rows to reflect the correct Employee Gender
+UC6-Ability_to_add_Gender_to_Employee_Payroll_Table_and_Update_the_Rows_to_reflect_the_correct_Employee_Gender
 --------------------------------------------------------------------------------------------------------------
 mysql> ALTER TABLE EMPLOYEE_PAYROLL ADD GENDER CHAR(1) AFTER NAME;
 Query OK, 0 rows affected (0.05 sec)
@@ -121,4 +121,94 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 +-------------+--------+--------+--------+------------+
 4 rows in set (0.00 sec)
 
+-------------------------------------------------------------------------------------------------------------- 
+UC7-Ability_to_find_sum,_average,_min,_max_and_number_of_male_and_female_employees
+--------------------------------------------------------------------------------------------------------------
+mysql> SELECT SUM(salary) FROM employee_payroll
+    -> WHERE gender = 'F' GROUP BY gender;
++-------------+
+| SUM(salary) |
++-------------+
+|      140000 |
++-------------+
+1 row in set (0.00 sec)
 
+mysql>  SELECT SUM(salary) FROM employee_payroll
+    ->  WHERE gender = 'M' GROUP BY gender;
++-------------+
+| SUM(salary) |
++-------------+
+|      140000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(salary) FROM employee_payroll
+    -> WHERE gender = 'F' GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       70000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT AVG(salary) FROM employee_payroll
+    -> WHERE gender = 'M' GROUP BY gender;
++-------------+
+| AVG(salary) |
++-------------+
+|       35000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql>  SELECT MIN(salary) FROM employee_payroll
+    ->  WHERE gender = 'F' GROUP BY gender;
++-------------+
+| MIN(salary) |
++-------------+
+|       70000 |
++-------------+
+1 row in set (0.02 sec)
+
+mysql>  SELECT MIN(salary) FROM employee_payroll
+    ->  WHERE gender = 'M' GROUP BY gender;
++-------------+
+| MIN(salary) |
++-------------+
+|       10000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(salary) FROM employee_payroll
+    -> WHERE gender = 'F' GROUP BY gender;
++-------------+
+| MAX(salary) |
++-------------+
+|       70000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT MAX(salary) FROM employee_payroll
+    -> WHERE gender = 'M' GROUP BY gender;
++-------------+
+| MAX(salary) |
++-------------+
+|       60000 |
++-------------+
+1 row in set (0.00 sec)
+
+mysql>  SELECT COUNT(salary) FROM employee_payroll  WHERE gender = 'F' GROUP BY gen
+der;
++---------------+
+| COUNT(salary) |
++---------------+
+|             2 |
++---------------+
+1 row in set (0.00 sec)
+
+mysql> SELECT COUNT(salary) FROM employee_payroll  WHERE gender = 'M' GROUP BY gender;
++---------------+
+| COUNT(salary) |
++---------------+
+|             4 |
++---------------+
+1 row in set (0.02 sec)

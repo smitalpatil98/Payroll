@@ -67,8 +67,8 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 +-------------+--------+--------+------------+
 4 rows in set (0.00 sec)
 
-------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
-UC5-Ability_to_retrieve_salary_data_for_a_particular_employee_as_well_as_all_employees_who_have_joined_in_a_particular_data_range_from_the_payroll_service_database
+------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+UC5-Ability to retrieve salary data for a particular employee as well as all employees who have joined in a particular data range from the payroll service database
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 mysql> SELECT SALARY FROM EMPLOYEE_PAYROLL  WHERE NAME = "RAM";
@@ -88,7 +88,7 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL WHERE START_DATE BETWEEN CAST('2018-01-03'
 2 rows in set (0.00 sec)
 
 -------------------------------------------------------------------------------------------------------------- 
-UC6-Ability_to_add_Gender_to_Employee_Payroll_Table_and_Update_the_Rows_to_reflect_the_correct_Employee_Gender
+UC6-Ability to add Gender to Employee Payroll Table and Update the Rows to reflect the correct Employee Gender
 --------------------------------------------------------------------------------------------------------------
 mysql> ALTER TABLE EMPLOYEE_PAYROLL ADD GENDER CHAR(1) AFTER NAME;
 Query OK, 0 rows affected (0.05 sec)
@@ -122,7 +122,7 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 4 rows in set (0.00 sec)
 
 -------------------------------------------------------------------------------------------------------------- 
-UC7-Ability_to_find_sum,_average,_min,_max_and_number_of_male_and_female_employees
+UC7-Ability to find sum, average, min, max and number of male and female employees
 --------------------------------------------------------------------------------------------------------------
 mysql> SELECT SUM(salary) FROM employee_payroll
     -> WHERE gender = 'F' GROUP BY gender;

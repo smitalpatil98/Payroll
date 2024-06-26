@@ -15,3 +15,40 @@ mysql> show databases;
 | sys                |
 +--------------------+
 5 rows in set (0.03 sec)
+
+mysql> use payroll_services;
+Database changed
+
+---------------------------------------------------------------------------------------------------------- 
+UC2-Ability to create a employee payroll table in the payroll service database to manage employee payrolls
+----------------------------------------------------------------------------------------------------------
+mysql> CREATE TABLE EMPLOYEE_PAYROLL(
+    -> EMPLOYEE_ID INT NOT NULL AUTO_INCREMENT,
+    -> NAME VARCHAR(255) NOT NULL,
+    -> SALARY DOUBLE NOT NULL,
+    -> START_DATE DATE NOT NULL,
+    -> PRIMARY KEY (EMPLOYEE_ID));
+Query OK, 0 rows affected (0.11 sec)
+
+mysql> DESCRIBE EMPLOYEE_PAYROLL;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| EMPLOYEE_ID | int          | NO   | PRI | NULL    | auto_increment |
+| NAME        | varchar(255) | NO   |     | NULL    |                |
+| SALARY      | double       | NO   |     | NULL    |                |
+| START_DATE  | date         | NO   |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
+
+------------------------------------------------------------------------------------------------------ 
+UC3-Ability to create employee payroll data in the payroll service database as part of CURD Operation
+------------------------------------------------------------------------------------------------------
+
+mysql>  INSERT INTO EMPLOYEE_PAYROLL (NAME,SALARY,START_DATE) VALUES
+    ->  ('RAM',10000.00,'2018-01-03'),
+    ->  ('SHAM',50000.00,'2019-05-21'),
+    ->  ('STEVEN',60000.00,'2012-01-22'),
+    ->  ('CHARLS',20000.00,'2011-02-06');
+Query OK, 4 rows affected (0.05 sec)
+Records: 4  Duplicates: 0  Warnings: 0

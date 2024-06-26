@@ -66,3 +66,23 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 |           4 | CHARLS |  20000 | 2011-02-06 |
 +-------------+--------+--------+------------+
 4 rows in set (0.00 sec)
+
+------------------------------------------------------------------------------------------------------ 
+UC5-Ability to retrieve salary data for a particular employee as well as all employees who have joined 
+in a particular data range from the payroll service database
+------------------------------------------------------------------------------------------------------
+mysql> SELECT SALARY FROM EMPLOYEE_PAYROLL  WHERE NAME = "RAM";
++--------+
+| SALARY |
++--------+
+|  10000 |
++--------+
+
+mysql> SELECT * FROM EMPLOYEE_PAYROLL WHERE START_DATE BETWEEN CAST('2018-01-03' AS DATE) AND DATE(NOW());
++-------------+------+--------+------------+
+| EMPLOYEE_ID | NAME | SALARY | START_DATE |
++-------------+------+--------+------------+
+|           1 | RAM  |  10000 | 2018-01-03 |
+|           2 | SHAM |  50000 | 2019-05-21 |
++-------------+------+--------+------------+
+2 rows in set (0.00 sec)

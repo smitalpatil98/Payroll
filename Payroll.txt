@@ -212,3 +212,25 @@ mysql> SELECT COUNT(salary) FROM employee_payroll  WHERE gender = 'M' GROUP BY g
 |             4 |
 +---------------+
 1 row in set (0.02 sec)
+-------------------------------------------------------------------------------------------------------------- 
+UC8-Ability_to_extend_employee_payroll_data_to_store_employee_information_like_employee_phone_address_and_department 
+- Ensure employee department is non nullable fields.
+- Add Default Value for address field.
+--------------------------------------------------------------------------------------------------------------
+mysql>  ALTER TABLE EMPLOYEE_PAYROLL ADD (phone_no INT,Address VARCHAR(255) DEFAULT 'MUMBAI', Department VARCHAR(255) NOT NULL );
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM EMPLOYEE_PAYROLL;
++-------------+---------+--------+--------+------------+----------+---------+------------+
+| EMPLOYEE_ID | NAME    | GENDER | SALARY | START_DATE | phone_no | Address | Department |
++-------------+---------+--------+--------+------------+----------+---------+------------+
+|           1 | RAM     | M      |  10000 | 2018-01-03 |     NULL | MUMBAI  |            |
+|           2 | SHAM    | M      |  50000 | 2019-05-21 |     NULL | MUMBAI  |            |
+|           3 | STEVEN  | M      |  60000 | 2012-01-22 |     NULL | MUMBAI  |            |
+|           4 | CHARLS  | M      |  20000 | 2011-02-06 |     NULL | MUMBAI  |            |
+|           5 | Sayli   | F      |  70000 | 2024-01-29 |     NULL | MUMBAI  |            |
+|           6 | Sukanya | F      |  70000 | 2023-01-12 |     NULL | MUMBAI  |            |
++-------------+---------+--------+--------+------------+----------+---------+------------+
+6 rows in set (0.00 sec)
+

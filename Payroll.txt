@@ -233,4 +233,44 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 |           6 | Sukanya | F      |  70000 | 2023-01-12 |     NULL | MUMBAI  |            |
 +-------------+---------+--------+--------+------------+----------+---------+------------+
 6 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------------------------------------------
+
+
+mysql> ALTER TABLE employee_payroll ADD (Basic_pay INT,Deductions INT,Taxable_pay INT, Income_tax INT, Net_pay INT);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  DESCRIBE employee_payroll;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| EMPLOYEE_ID | int          | NO   | PRI | NULL    | auto_increment |
+| NAME        | varchar(255) | NO   |     | NULL    |                |
+| GENDER      | char(1)      | YES  |     | NULL    |                |
+| SALARY      | double       | NO   |     | NULL    |                |
+| START_DATE  | date         | NO   |     | NULL    |                |
+| phone_no    | int          | YES  |     | NULL    |                |
+| Address     | varchar(255) | YES  |     | MUMBAI  |                |
+| Department  | varchar(255) | NO   |     | NULL    |                |
+| Basic_pay   | int          | YES  |     | NULL    |                |
+| Deductions  | int          | YES  |     | NULL    |                |
+| Taxable_pay | int          | YES  |     | NULL    |                |
+| Income_tax  | int          | YES  |     | NULL    |                |
+| Net_pay     | int          | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+13 rows in set (0.01 sec)
+
+mysql> select * from employee_payroll;
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME    | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           1 | RAM     | M      |  10000 | 2018-01-03 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
+|           2 | SHAM    | M      |  50000 | 2019-05-21 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
+|           3 | STEVEN  | M      |  60000 | 2012-01-22 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
+|           4 | CHARLS  | M      |  20000 | 2011-02-06 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
+|           5 | Sayli   | F      |  70000 | 2024-01-29 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
+|           6 | Sukanya | F      |  70000 | 2023-01-12 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+6 rows in set (0.00 sec)
+
 

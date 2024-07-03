@@ -234,7 +234,8 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 +-------------+---------+--------+--------+------------+----------+---------+------------+
 6 rows in set (0.00 sec)
 -------------------------------------------------------------------------------------------------------------------------
-
+UC9-Ability_to_extend_employee_payroll_table_to_have_Basic_Pay,Deductions,_Taxable_Pay,Income_Tax,_Net_Pay
+-------------------------------------------------------------------------------------------------------------------------
 
 mysql> ALTER TABLE employee_payroll ADD (Basic_pay INT,Deductions INT,Taxable_pay INT, Income_tax INT, Net_pay INT);
 Query OK, 0 rows affected (0.04 sec)

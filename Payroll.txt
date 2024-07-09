@@ -234,8 +234,8 @@ mysql> SELECT * FROM EMPLOYEE_PAYROLL;
 +-------------+---------+--------+--------+------------+----------+---------+------------+
 6 rows in set (0.00 sec)
 -------------------------------------------------------------------------------------------------------------------------
-
-
+UC9-Ability_to_extend_employee_payroll_table_to_have_Basic_Pay,Deductions,_Taxable_Pay,Income_Tax,_Net_Pay
+-------------------------------------------------------------------------------------------------------------------------
 mysql> ALTER TABLE employee_payroll ADD (Basic_pay INT,Deductions INT,Taxable_pay INT, Income_tax INT, Net_pay INT);
 Query OK, 0 rows affected (0.04 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -272,5 +272,169 @@ mysql> select * from employee_payroll;
 |           6 | Sukanya | F      |  70000 | 2023-01-12 |     NULL | MUMBAI  |            |      NULL |       NULL |        NULL |       NULL |    NULL |
 +-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
 6 rows in set (0.00 sec)
+-------------------------------------------------------------------------------------------------------------------------
+UC10-Ability to make Terissa as part of
+Sales and Marketing Department
+- Note: The Complete employee payroll
+roll need to be Inserted
+- If a Salary is now going to be updated
+multiple rows has to be updated
+creating unnecessary redundancy
+- Further There is 2 Employee ID so
+according to Database there is two
+different Terissa
+-------------------------------------------------------------------------------------------------------------------------
+mysql> UPDATE EMPLOYEE_PAYROLL SET DEPARTMENT = "IT",BASIC_PAY=25000,DEDUCTIONS=1000,TAXABLE_PAY=2500,INCOME_TAX=500,NET_PAY=1000 WHERE NAME = "RAM";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
 
+mysql> SELECT * FROM EMPLOYEE_PAYROLL WHERE NAME = "RAM";
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           1 | RAM  | M      |  10000 | 2018-01-03 |     NULL | MUMBAI  | IT         |     25000 |       1000 |        2500 |        500 |    1000 |
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+1 row in set (0.00 sec)
 
+mysql> UPDATE employee_payroll SET Department = "IT",Basic_pay = 26000, Deductions = 1600, Taxable_pay = 1000, Income_tax = 600,Net_pay = 1100 WHERE name = "SHAM";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll WHERE name = "SHAM";
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           2 | SHAM | M      |  50000 | 2019-05-21 |     NULL | MUMBAI  | IT         |     26000 |       1600 |        1000 |        600 |    1100 |
++-------------+------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql>  UPDATE employee_payroll SET Department = "IT",Basic_pay = 25000, Deductions = 1200, Taxable_pay = 500, Income_tax = 500,Net_pay = 1000 WHERE name = "STEVEN";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  SELECT * FROM employee_payroll WHERE name = "STEVEN";
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME   | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           3 | STEVEN | M      |  60000 | 2012-01-22 |     NULL | MUMBAI  | IT         |     25000 |       1200 |         500 |        500 |    1000 |
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE employee_payroll SET Department = "IT",Basic_pay = 26500, Deductions = 1800, Taxable_pay = 2100, Income_tax = 850,Net_pay = 1100 WHERE name = "CHARLS";
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll WHERE name = "CHARLS";
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME   | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           4 | CHARLS | M      |  20000 | 2011-02-06 |     NULL | MUMBAI  | IT         |     26500 |       1800 |        2100 |        850 |    1100 |
++-------------+--------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE employee_payroll SET Department = "Sales",Basic_pay = 28000, Deductions = 1900, Taxable_pay = 1200, Income_tax = 900,Net_pay = 1300 WHERE name = "Sayli ";
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql>  SELECT * FROM employee_payroll WHERE name = "Sayli ";
+Empty set (0.00 sec)
+
+mysql> UPDATE employee_payroll SET Department = "Sales",Basic_pay = 23000, Deductions = 1100, Taxable_pay = 1250, Income_tax = 800,Net_pay = 1200 WHERE name = "Sukanya";
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee_payroll WHERE name = "Sukanya";
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+| EMPLOYEE_ID | NAME    | GENDER | SALARY | START_DATE | phone_no | Address | Department | Basic_pay | Deductions | Taxable_pay | Income_tax | Net_pay |
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+|           6 | Sukanya | F      |  70000 | 2023-01-12 |     NULL | MUMBAI  | Sales      |     23000 |       1100 |        1250 |        800 |    1200 |
++-------------+---------+--------+--------+------------+----------+---------+------------+-----------+------------+-------------+------------+---------+
+1 row in set (0.00 sec)
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                           UC_11_Create_New_Table_called_Employee_Department_having_Employee_Id_and_Department_ID_and_redo _the_UC_7
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+mysql> CREATE TABLE DEPARTMENT_PAYROLL(DEPARTMENT_ID INT NOT NULL, PRIMARY KEY (DEPARTMENT_ID));
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> SHOW TABLES;
++----------------------------+
+| Tables_in_payroll_services |
++----------------------------+
+| department_payroll         |
+| employee_payroll           |
++----------------------------+
+2 rows in set (0.03 sec)
+
+mysql> INSERT INTO department_payroll (department_id) VALUES (101),(102),(103),(104),(105);
+Query OK, 5 rows affected (0.05 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> ALTER table department_payroll ADD(departement_name VARCHAR (300));
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql>  UPDATE department_payroll SET departement_name="IT" WHERE department_id=
+101;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE department_payroll SET departement_name="CIVIL" WHERE department_id=102;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE department_payroll SET departement_name="MECHANICAL" WHERE depart
+ment_id=103;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE department_payroll SET departement_name="EXTC" WHERE department_id=104;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql>  UPDATE department_payroll SET departement_name="ETC" WHERE department_id=105;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ SELECT * FROM department_payroll' at line 1
+mysql>  SELECT * FROM department_payroll;
++---------------+------------------+
+| DEPARTMENT_ID | departement_name |
++---------------+------------------+
+|           101 | IT               |
+|           102 | CIVIL            |
+|           103 | MECHANICAL       |
+|           104 | EXTC             |
+|           105 | ETC              |
++---------------+------------------+
+5 rows in set (0.00 sec)
+
+mysql>  CREATE TABLE employee_department (employee_id INT,department_id INT,PRIMARY KEY (employee_id, department_id),FOREIGN KEY (employee_id) REFERENCES employee_payroll(employee_id),FOREIGN KEY (department_id) REFERENCES department_payroll(department_id));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (1, 101);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (2, 102);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (3, 103);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (4, 104);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> INSERT INTO employee_department (employee_id, department_id) VALUES (5, 105);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> SELECT * FROM EMPLOYEE_DEPARTMENT;
++-------------+---------------+
+| employee_id | department_id |
++-------------+---------------+
+|           1 |           101 |
+|           2 |           102 |
+|           3 |           103 |
+|           4 |           104 |
+|           5 |           105 |
++-------------+---------------+
+5 rows in set (0.00 sec)
